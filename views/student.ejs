@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Slot Book</title> 
+        <script>
+            //for diable past date
+            function disablePastDate()
+            {
+                var today = new Date().toISOString().split('T')[0];
+                document.getElementById("slotdate").setAttribute("min",today);
+
+                //alert("Disable");
+            }
+        </script>
+    </head>
+    <body>
+      <center>
+        <h1>
+        
+        </h1>
+        <% if(msg==null){
+            %>
+            <h1>Hey <%= user %> book your slot</h1>
+            <form method="POST" action="/student/bookslot">
+                
+                <input type="hidden" id="user" name="user" value="<%=user%>">
+                <input type="hidden" id="userId" name="userId" value="<%=userId%>">
+                <input type="date" onclick="disablePastDate()" name="slotdate" id="slotdate">
+                <br>
+                <input type="submit" value="Book Your Slot"/>
+              </form>
+            <%
+        }
+        %>
+        <% if(msg!=null){
+            %>
+            <h1><%=msg%></h1>
+            <%
+        }
+        %>
+        <button style="color:white;background-color: red;font-size: medium;">
+            <a href="/logout">Logout</a>
+        </button>
+      </center>
+    </body>
+</html>

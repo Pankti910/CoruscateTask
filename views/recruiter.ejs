@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Recriter</title>
+        <style>
+            *{
+                font-size:large;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+
+            <h1>Slot Request</h1>
+            
+            <table border="1" style="width:50%;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<list.length;i++){%>
+                        <tr>
+                            <td  style="align-self: center;text-align: center;">
+                                <%= list[i].username %>
+                            </td>
+                            <td  style="align-self: center;text-align: center;">
+                                <% if(list[i].status==1){%>
+                                    <a href="/recruiter/changestatus?userId=<%=list[i].userId%>&&status=0">
+                                        Reject
+                                        </a>
+                                <%}%>
+                                <%if(list[i].status==0){%>
+                                    <a href="/recruiter/changestatus?userId=<%=list[i].userId%>&&status=1">
+                                    Accept
+                                    </a>
+                                <%}%>
+                            </td>
+                        </tr>
+
+                    <%}%>
+                </tbody>
+            </table>
+            <button style="color:white;background-color: red;font-size: medium;">
+                <a href="/logout">Logout</a>
+            </button>
+        </center>
+    </body>
+</html>
